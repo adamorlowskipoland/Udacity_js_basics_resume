@@ -2,6 +2,7 @@
 //This is empty on purpose! Your code to build the resume will go here.
 // */
 
+
 const formattedName = HTMLheaderName.replace("%data%", "Adam Orlov");
 const formattedRole = HTMLheaderRole.replace("%data%", "Junior JavaScript Developer");
 
@@ -55,5 +56,8 @@ var education = {
 $('#header').prepend(formattedRole);
 $('#header').prepend(formattedName);
 $("#main").append(bio.name);
-$("#main").append(work["currentJobPosition"]);
+
+
 //$("#main").append(education.lastSchool);
+
+
