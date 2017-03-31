@@ -16,7 +16,7 @@ var bio = {
         },
     "welcomeMessage" : "Hi, how are you?",
     "skills" : ["HTML5", "CSS3", "Bootstrap", "JS", "jQuery"],
-    "bioPic" : "images/fry.jpg"
+    "bioPic" : "../images/fry.jpg"
 }
 
 
@@ -52,12 +52,66 @@ var education = {
     ]
 };
 
+var work = {
+    "jobs" : [
+        {
+            "employer" : "Rywal-RHC",
+            "title" : "Project Manager",
+            "dates" : "2013-2016",
+            "location" : "Poland",
+            "workDescription" : ["Management", "Sales"]
+        },
+        {
+            "employer" : "Trops S.A.",
+            "title" : "Sales Representative",
+            "dates" : "2010-2013",
+            "location" : "kuj-pom area",
+            "workDescription" : "Sales"
+        }
+    ]
+};
+
+
+//picture 
+//
+//$('#skills').prepend(HTMLbioPic);
+//$('.biopic:last').src = bio.bioPic;
+//console.log(document.getElementsByClassName('biopic'));
+
+
+if (bio.skills !== "") {
+    $('#header').append(HTMLskillsStart);
+    
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
+    $('#skills').append(formattedSkill);
+    
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
+    $('#skills').append(formattedSkill);
+    
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
+    $('#skills').append(formattedSkill);
+    
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
+    $('#skills').append(formattedSkill);
+    
+    var formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
+    $('#skills').append(formattedSkill);
+    
+} else {
+    console.log("There is no skills");
+}
+
+
+for (job in work.jobs) {
+    var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+    var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+    $('#workExperience').append(HTMLworkStart);
+    $('.work-entry:last').append(formattedEmployer + formattedTitle);
+}
 
 $('#header').prepend(formattedRole);
 $('#header').prepend(formattedName);
-$("#main").append(bio.name);
 
 
-//$("#main").append(education.lastSchool);
 
 
