@@ -3,7 +3,7 @@
 // */
 
 
-const formattedName = HTMLheaderName.replace("%data%", "Adam Orlov");
+const formattedName = HTMLheaderName.replace("%data%", "Adam Orlowski");
 const formattedRole = HTMLheaderRole.replace("%data%", "Junior JavaScript Developer");
 
 var bio = {
@@ -65,11 +65,30 @@ var work = {
             "employer" : "Trops S.A.",
             "title" : "Sales Representative",
             "dates" : "2010-2013",
-            "location" : "kuj-pom area",
+            "location" : "Kuyavian-Pomeranian Voivodeship",
             "workDescription" : "Sales"
         }
     ]
 };
+
+
+var projects = {
+    "projects" : [
+        {
+            "title" : "Cat Clicker",
+            "dates" : "2017.03",
+            "description" : "Building simple Cat Clicking app based on M-model O-object V-view",
+            "image" : "../images/catClicker.jpg"
+        },
+        {
+            "title" : "Todo List App",
+            "dates" : "2017.02",
+            "description" : "Building Todo list app with multiply views, using Object Oriented Programming.",
+            "image" : "../images/todoListApp.jpg"
+        }
+    ]
+};
+
 
 
 //picture 
@@ -101,16 +120,65 @@ if (bio.skills !== "") {
     console.log("There is no skills");
 }
 
+function displayWork() {
+    for (job in work.jobs) {
+        var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+        var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+        var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+        var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+        var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[job].workDescription);
 
-for (job in work.jobs) {
-    var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-    var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-    $('#workExperience').append(HTMLworkStart);
-    $('.work-entry:last').append(formattedEmployer + formattedTitle);
+        $('#workExperience').append(HTMLworkStart);
+        $('.work-entry:last').append(formattedEmployer + formattedTitle);
+        $('.work-entry:last').append(formattedWorkDates + formattedWorkLocation + formattedWorkDescription);
+    }
 }
+displayWork();
+
+
+projects.display = function () {
+    for (var project in projects.projects) {
+        
+        var formattedHTMLprojectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+        
+        var formattedHTMLprojectDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+        
+        var formattedHTMLprojectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+        
+        var formattedHTMLprojectImage = HTMLprojectImage.replace("%data%", projects.projects[project].image);
+
+        $('#projects').append(HTMLprojectStart);
+        $('.project-entry:last').append(formattedHTMLprojectTitle);
+        $('.project-entry:last').append(formattedHTMLprojectDates);
+        $('.project-entry:last').append(formattedHTMLprojectDescription);
+        $('.project-entry:last').append(formattedHTMLprojectImage);
+    }
+}
+projects.display();
+
+
 
 $('#header').prepend(formattedRole);
 $('#header').prepend(formattedName);
+$('#main').append(internationalizeButton);
+
+function inName(nameString) {
+    var arrayNameString = nameString.trim().split(" ");
+    arrayNameString[0] = arrayNameString[0][0].toUpperCase() + arrayNameString[0].slice(1).toLowerCase();
+    arrayNameString[1] = arrayNameString[1].toUpperCase();
+    nameString = arrayNameString.join(" ");
+    return nameString;
+}
+
+
+
+
+
+
+//  showing x and y on click
+//$(document).click(function(loc) {
+//    logClicks(loc.pageX, loc.pageY);
+//});
 
 
 
