@@ -165,6 +165,7 @@ projects.display();
 $('#header').prepend(formattedRole);
 $('#header').prepend(formattedName);
 $('#main').append(internationalizeButton);
+$('#mapDiv').append(googleMap);
 
 function inName(nameString) {
     var arrayNameString = nameString.trim().split(" ");
@@ -173,17 +174,6 @@ function inName(nameString) {
     nameString = arrayNameString.join(" ");
     return nameString;
 }
-
-
-
-
-
-
-//  showing x and y on click
-//$(document).click(function(loc) {
-//    logClicks(loc.pageX, loc.pageY);
-//});
-
 
 
 
