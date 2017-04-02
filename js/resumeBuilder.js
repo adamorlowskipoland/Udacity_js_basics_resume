@@ -151,18 +151,38 @@ var projects = {
             "title" : "Cat Clicker",
             "dates" : "2017.03",
             "description" : "Building simple Cat Clicking app based on M-model O-object V-view",
-            "image" : "../images/catClicker.jpg"
+            "images" : ["../images/catClicker.jpg"]
         },
         {
             "title" : "Todo List App",
             "dates" : "2017.02",
             "description" : "Building Todo list app with multiply views, using Object Oriented Programming.",
-            "image" : "../images/todoListApp.jpg"
+            "images" : ["../images/todoListApp.jpg"]
         }
-    ]
+    ],
+    "display" : function() {
+        for (var project in projects.projects) {
+
+            var formattedHTMLprojectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+
+            var formattedHTMLprojectDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+
+            var formattedHTMLprojectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+
+            var formattedHTMLprojectImage = HTMLprojectImage.replace("%data%", projects.projects[project].images);
+            console.log(formattedHTMLprojectImage);
+            $('#projects').append(HTMLprojectStart);
+            $('.project-entry:last').append(formattedHTMLprojectTitle);
+            $('.project-entry:last').append(formattedHTMLprojectDates);
+            $('.project-entry:last').append(formattedHTMLprojectDescription);
+
+            if (projects.projects[project].images.length > 0) {
+                $('.project-entry:last').append(formattedHTMLprojectImage);
+
+            }
+        }
+    }
 };
-
-
 
 //picture 
 //
@@ -173,30 +193,6 @@ var projects = {
 bio.display();
 work.display();
 education.display();
-
-
-projects.display = function () {
-    for (var project in projects.projects) {
-        
-        var formattedHTMLprojectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
-        
-        var formattedHTMLprojectDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
-        
-        var formattedHTMLprojectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
-        
-        var formattedHTMLprojectImage = HTMLprojectImage.replace("%data%", projects.projects[project].image);
-        console.log(formattedHTMLprojectImage);
-        $('#projects').append(HTMLprojectStart);
-        $('.project-entry:last').append(formattedHTMLprojectTitle);
-        $('.project-entry:last').append(formattedHTMLprojectDates);
-        $('.project-entry:last').append(formattedHTMLprojectDescription);
-        
-        if (projects.projects[project].image.length > 0) {
-            $('.project-entry:last').append(formattedHTMLprojectImage);
-
-        }
-    }
-}
 projects.display();
 
 
@@ -213,6 +209,5 @@ function inName(nameString) {
     nameString = arrayNameString.join(" ");
     return nameString;
 }
-
 
 
